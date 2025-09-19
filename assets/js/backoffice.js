@@ -133,8 +133,10 @@ btnReset.addEventListener("click", () => {
             throw new Error("Errore nella richiesta: " + response.status);
           }
         }
-        alert("Abbiamo eliminato la risorsa");
-        window.location.href = "index.html";
+        generateAlert("success", "E' andato tutto bene, la risorsa è stata eliminata!");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 2000);
       })
       .catch((err) => {
         console.log(err);
