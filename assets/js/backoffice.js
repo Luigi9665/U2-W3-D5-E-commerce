@@ -92,54 +92,65 @@ const generateModale = (title, paragrafo) => {
 };
 
 // controllo risposta modale
-const checkAnswerModale = () => {
-  return new Promise((resolve) => {
-    const confirmBtn = document.getElementById("confirmed");
-    const rejectBtn = document.getElementById("reject");
-
-    confirmBtn.addEventListener("click", () => resolve(true), { once: true });
-    rejectBtn.addEventListener("click", () => resolve(false), { once: true });
-  });
-};
+// const checkAnswerModale = () => {
+//   const myModalEl = document.getElementById("ReseteorDeleteModal");
+//   myModalEl.addEventListener("shown.bs.modal", (event) => {
+//     console.log(event);
+//     const modalFooter = document.querySelector(".modal-footer");
+//     modalFooter.addEventListener("click", (event) => {
+//       console.log(event.target);
+//       console.log(event.target.innerText);
+//       if (event.target.innerText === "Save changes") {
+//         return true;
+//       } else {
+//         return false;
+//       }
+//     });
+//   });
+// };
 
 // funzione per la gestione del button reset o delete
-btnReset.addEventListener("click", async () => {
+btnReset.addEventListener("click", () => {
   if (appId) {
-    generateModale("Delete", "Sei sicuro di voler eliminare la risora?");
-    const confermato = await checkAnswerModale();
-    if (confermato) {
-      fetch(URL, {
-        method: "DELETE",
-        headers: {
-          Authorization: key,
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            if (response.status === 401 || response.status === 403) {
-              throw new Error("Autorizzazione fallita, controlla la tua API key.");
-            } else if (response.status === 404) {
-              throw new Error("Risorsa non trovata (404).");
-            } else if (response.status >= 500) {
-              throw new Error("Errore del server, riprova più tardi.");
-            } else {
-              throw new Error("Errore nella richiesta: " + response.status);
-            }
+    // generateModale("Delete", "Sei sicuro di voler eliminare la risora?");
+    // const confermato = checkAnswerModale();
+    // if (confermato) {
+    fetch(URL, {
+      method: "DELETE",
+      headers: {
+        Authorization: key,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          if (response.status === 401 || response.status === 403) {
+            throw new Error("Autorizzazione fallita, controlla la tua API key.");
+          } else if (response.status === 404) {
+            throw new Error("Risorsa non trovata (404).");
+          } else if (response.status >= 500) {
+            throw new Error("Errore del server, riprova più tardi.");
+          } else {
+            throw new Error("Errore nella richiesta: " + response.status);
           }
-          alert("Abbiamo eliminato la risorsa");
-          window.location.href = "index.html";
-        })
-        .catch((err) => {
-          console.log(err);
-          alert(err);
-        });
-    }
+        }
+        alert("Abbiamo eliminato la risorsa");
+        window.location.href = "index.html";
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+      });
+    // parentesi del if
+    // }
   } else {
-    generateModale("Reset", "Sei sicuro di volere Resettare il form?");
-    const confermato = await checkAnswerModale();
-    if (confermato) {
-      form.reset();
-    }
+    // generateModale("Reset", "Sei sicuro di volere Resettare il form?");
+    // const confermato = checkAnswerModale();
+    // console.log(confermato);
+    // if (confermato) {
+    // console.log("dentro l'if", confermato);
+    form.reset();
+    //   parentesi del secondo if
+    // }
   }
 });
 

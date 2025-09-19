@@ -37,10 +37,6 @@
                 </button>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </nav>
@@ -77,9 +73,10 @@
           </div>
           <div class="d-flex gap-2 align-items-center justify-content-center">
             <button id="btnSubmit" type="submit" class="btn btn-primary">Salva prodotto</button>
-            <button id="btnReset" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ReseteorDeleteModal">Reset</button>
+            <button id="btnReset" type="button" class="btn btn-danger">Reset</button>
+            <!-- <button id="btnReset" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ReseteorDeleteModal">Reset</button> -->
             <!-- Modal -->
-            <div class="modal fade" id="ReseteorDeleteModal" tabindex="-1" aria-labelledby="ReseteorDeleteModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="ReseteorDeleteModal" tabindex="-1" aria-labelledby="ReseteorDeleteModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -88,12 +85,12 @@
                   </div>
                   <div class="modal-body"><p id="modalP"></p></div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button id="reject" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="confirmed" type="button" class="btn btn-primary">Save changes</button>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- fine modale -->
           </div>
         </form>
